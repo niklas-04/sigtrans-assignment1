@@ -6,8 +6,8 @@ from scipy import signal
 
 t0 = 0.01
 f2 = 1000
-deltaTime = 0.01
-timeVector = np.arange(0, 10, deltaTime)
+deltaTime = 0.01 * 10**-3
+timeVector = np.arange(0, 0.01, deltaTime)
 
 #Sine wave 1
 amp1 = 1
