@@ -4,7 +4,7 @@ from scipy import signal
 
 #import sounddevice as sd
 
-
+#Helper func for use in several tasks
 def sines(timeVector):
     t1 = 0.01
     f2 = 1000
@@ -45,13 +45,13 @@ def task1():
     ax.plot(timeVector, x1, label="x1(t)")
     ax.plot(timeVector, x2, label="x2(t)")
 
-    ax.set_xlabel("time (s)")
-    ax.set_ylabel("output signal")
+    ax.set_xlabel("Time (s)")
+    ax.set_ylabel("x(t)")
 
     ax.legend()
 
     ax.set_xlim(0, 10 * 10**-3)
-    ax.set_ylim(-1, 1)
+    ax.set_ylim(-1.1, 1.1)
 
     plt.show()
 
@@ -74,13 +74,15 @@ def task2():
 
 
     fig, ax = plt.subplots()
-    ax.plot(timeVector, h, label="impulse response")
-    ax.plot(timeVector, y, label="dirac delta convolution")
-    ax.set_xlabel("time (s)")
-    ax.set_ylabel("output signal")
+    ax.plot(timeVector, h, label="impulse response (h)")
+    ax.plot(timeVector, y, label="dirac delta * h (convolution)")
+    ax.set_xlabel("Time (s)")
+    ax.set_ylabel("y(t)")
+    ax.set_xlim(0, 5 * 10**-3)
     ax.legend()
     plt.show()
 
+#Task 3
 def task3():
     alpha = 1000 * np.pi
     deltaTime = 0.01 * 10**-3
@@ -99,15 +101,16 @@ def task3():
     y2 = y2[0: x2.shape[0]]
 
     fig, ax = plt.subplots()
-    ax.plot(timeVector, y1, label="convolution sine 1")
-    ax.plot(timeVector, y2, label="convolution sine 2")
-    ax.set_xlabel("time (s)")
-    ax.set_ylabel("output signal")
+    ax.plot(timeVector, y1, label="y1(t)")
+    ax.plot(timeVector, y2, label="y2(t)")
+    ax.set_xlabel("Time (s)")
+    ax.set_ylabel("y(t)")
     ax.legend()
     ax.set_xlim(0, 20 * 10**-3)
     ax.set_ylim(-1, 1)
     plt.show()
 
+#Task 4
 def task4():
     def sumArr(in1, in2):
         out = np.zeros_like(in1)
@@ -139,13 +142,17 @@ def task4():
     y3 = y3[0: x3.shape[0]]
 
     fig, ax = plt.subplots()
-    ax.plot(timeVector, y3, label="y3")
-    ax.plot(timeVector, y12, label="y1 + y2")
+    ax.plot(timeVector, y3, label="y3(t)")
+    ax.plot(timeVector, y12, label="y1(t) + y2(t)")
 
-    ax.set_xlabel("time (s)")
-    ax.set_ylabel("output signal")
+    ax.set_xlabel("Time (s)")
+    ax.set_ylabel("y(t)")
     ax.legend()
     ax.set_xlim(0, 20 * 10**-3)
     plt.show()
 
-task4()
+#To run, uncomment the desired task
+#task1()
+#task2()
+task3()
+#task4()
